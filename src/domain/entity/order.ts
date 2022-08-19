@@ -17,7 +17,8 @@ export default class Order {
     return this._id;
   }
 
-  get customerId(): string {//vc so cria os get conforme vc for precisando
+  get customerId(): string {
+    //vc so cria os get conforme vc for precisando
     return this._customerId;
   }
 
@@ -45,5 +46,9 @@ export default class Order {
 
   total(): number {
     return this._items.reduce((acc, item) => acc + item.price, 0);
+  }
+
+  addItems(items: OrderItem[]) {
+    this._items = [...this._items, ...items];
   }
 }
