@@ -3,8 +3,9 @@ import EventDispatcher from "../@shared/event-dispatcher";
 import PrintFirtsLogWhenCustomerIsCreatedHandler from "./handler/print-first-log-when-customer-is-created.handler";
 import PrintSecondLogWhenCustomerIsCreatedHandler from "./handler/print-second-log-when-customer-is-created.handler";
 import CustomerCreatedEvent from "./customer-created.event";
+import CustomerChangedAddressEvent from "./customer-changed-address.event";
 
-describe("Domain events tests", () => {
+describe("Customer events tests", () => {
   it("should notify all event handlers", () => {
     const eventDispatcher = new EventDispatcher();
     const eventHandlerFirst = new PrintFirtsLogWhenCustomerIsCreatedHandler();
@@ -32,5 +33,27 @@ describe("Domain events tests", () => {
 
     expect(spyEventHandlerFirst).toHaveBeenCalled();
     expect(spyEventHandlerSecond).toHaveBeenCalled();
+  });
+
+  it("should notify all event handlers", () => {
+    const eventDispatcher = new EventDispatcher();
+    const eventHandler = new PrintFirtsLogWhenCustomerIsCreatedHandler();
+    const spyEventHandler = jest.spyOn(eventHandler, "handle");
+
+    eventDispatcher.register("CustomerChangedAddressEvent", eventHandler);
+
+    expect(
+      eventDispatcher.getEventHandlers["CustomerChangedAddressEvent"][0]
+    ).toMatchObject(eventHandler);
+
+    const customerChangedAddressEvent = new CustomerChangedAddressEvent({
+      id: "123",
+      endereco: "rua x",
+      nome: "customer",
+    });
+
+    eventDispatcher.notify(customerChangedAddressEvent);
+
+    expect(spyEventHandler).toHaveBeenCalled();
   });
 });
