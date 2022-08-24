@@ -18,7 +18,7 @@ describe("Order repository test", () => {
   beforeEach(async () => {
     sequelize = new Sequelize({
       dialect: "sqlite",
-      storage: "sqlite::memory:",
+      storage: ":memory:",
       logging: false,
       sync: { force: true },
     });
