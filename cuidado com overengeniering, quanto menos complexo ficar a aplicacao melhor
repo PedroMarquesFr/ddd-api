@@ -1,0 +1,2 @@
+Complexidade acidantal eh importante no cenario do sequelize mas depende da escolha arquitetural, no final quanto mais simples melhor,
+nao achoi q adicionar uma pasta pro sequelize em cada repositorio eh um problema, por isso fiz
