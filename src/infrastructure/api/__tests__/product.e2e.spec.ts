@@ -15,7 +15,7 @@ describe("E2E test for product", () => {
       .post("/product")
       .send({ name: "glass", price: 20 });
     expect(response.status).toBe(201);
-    console.log(response.body)
+    console.log(response.body);
     expect(response.body.name).toBe("glass");
     expect(response.body.price).toBe(20);
   });
@@ -38,6 +38,14 @@ describe("E2E test for product", () => {
       .get("/product")
       .set("Accept", "application/xml")
       .send();
-    expect(listResponseXML.body.name).toBe(200);
+    expect(listResponseXML.text).toContain(
+      `<?xml version="1.0" encoding="UTF-8"?>`
+    );
+    expect(listResponseXML.text).toContain(`<products>`);
+    expect(listResponseXML.text).toContain(`<product>`);
+    expect(listResponseXML.text).toContain(`<name>glass</name>`);
+    expect(listResponseXML.text).toContain(`<price>20</price>`);
+    expect(listResponseXML.text).toContain(`<name>glass2</name>`);
+    expect(listResponseXML.text).toContain(`<price>22</price>`);
   });
 });

@@ -1,7 +1,7 @@
 import { toXML } from "jstoxml";
 import { OutputListProductDto } from "../../../usecase/product/list/product.list.dto";
 
-export default class CustomerPresenter {
+export default class ProductPresenter {
   static listXML(data: OutputListProductDto): string {
     const xmlOption = {
       header: true,
