@@ -1,0 +1,24 @@
+## What was reinforced in this project
+- Unit, integration and end2end tests
+- DDD Tactical Design
+    - Agregates
+        - Entity
+        - Value Objects
+    - Domain Services
+    - Repositories
+    - Factory
+    - Business Complexity vs
+- Hexagonal Architecture Principles
+    - Ports and Adapters
+    - Dependency Inversion Principle
+- Clean Architecture
+    - Architectural Limits
+    - Usecase
+        - DTO, input, output
+        - Single Responsability Principle
+        - Dependency Inversion Principle
+    - Presenters
+- Notification Pattern
+- Entity Validation vs Coupling
+    - yup library
+    - Keep Domain layer isolated
